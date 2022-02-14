@@ -48,7 +48,10 @@ RunService.Heartbeat:Connect(function()
             local Difference = not InputFolder.Downscroll.Value and (Current - Start) or (Start - Current)
 
             local IsHell = Object:FindFirstChild("HellNote") and Object:FindFirstChild("HellNote").Value
-
+            warn(Object:FindFirstChild("HellNote").Value)
+            
+            local IsStatic = {}
+            
             if Difference <= 0.35 and not IsHell then
                 Marked[#Marked + 1] = Object
 
