@@ -52,7 +52,10 @@ RunService.Heartbeat:Connect(function()
             
             local IsStatic = {}
             
-            if Difference <= 0.35 and not IsHell then
+            if Object.Name == '2' then
+                IsStatic == 'true'
+            
+            if Difference <= 0.35 and not IsHell or IsStatic then
                 Marked[#Marked + 1] = Object
 
                 InputManager:SendKeyEvent(true, Enum.KeyCode[Keybind], false, nil)
