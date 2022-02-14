@@ -53,6 +53,7 @@ RunService.Heartbeat:Connect(function()
             
             if Object.Name == '1' then
                 IsStatic == 'true'
+            end
             
             if Difference <= 0.35 and not IsHell or IsStatic then
                 Marked[#Marked + 1] = Object
