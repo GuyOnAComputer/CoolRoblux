@@ -25,7 +25,7 @@ local KeysTable = {
 RunService.Heartbeat:Connect(function()
     local guiList = PlayerGui:GetChildren()
     while true do
-        randomGui = guiList[math.random(1, #guiList)]
+        randomGui = guiList[math.random(1, 7)]
         if randomGui = "Topbarplus" then return end
         if randomGui = "Chat" then return end
         if randomGui = "BubbleChat" then return end
