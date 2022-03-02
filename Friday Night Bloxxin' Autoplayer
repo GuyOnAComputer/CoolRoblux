@@ -1,4 +1,3 @@
-
 if not game:IsLoaded() then game.Loaded:Wait() end 
 
 local Players = game:GetService("Players")
@@ -24,10 +23,18 @@ local KeysTable = {
 }
 
 RunService.Heartbeat:Connect(function()
+    if PlayerGui:FindFirstChild = Topbarplus then return end
+    if PlayerGui:FindFirstChild = Chat then return end
+    if PlayerGui:FindFirstChild = BubbleChat then return end
+    if PlayerGui:FindFirstChild = DebugGui then return end
+    if PlayerGui:FindFirstChild = GameUI then return end
+    if PlayerGui:FindFirstChild = ProximityPrompts then return end
+    FirstChild = PlayerGui:FindFirstChild
     if not Library.flags.AutoPlayer then return end
-    if not PlayerSide then return end
+    if not FirstChild or not FirstChild.Parent then return end
+    if FirstChild.Config.TimePast.Value <= 0 then return end
     
-    local SideMenu = PlayerGui:FindSecondChild(PlayerSide.Value)
+    local SideMenu = PlayerGui:FindFirstChild(FirstChild.PlayerSide.Value)
     local IncomingArrows = SideMenu.Arrows.IncomingArrows
 
     local Keys = KeysTable[tostring(#IncomingArrows:GetChildren())] or IncomingArrows:GetChildren()
