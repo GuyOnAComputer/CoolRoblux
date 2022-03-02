@@ -25,8 +25,7 @@ local KeysTable = {
 
 RunService.Heartbeat:Connect(function()
     if not Library.flags.AutoPlayer then return end
-    if not Menu or not Menu.Parent then return end
-    if Menu.Config.TimePast.Value <= 0 then return end
+    if not PlayerSide then return end
     
     local SideMenu = PlayerGui:FindSecondChild(PlayerSide.Value)
     local IncomingArrows = SideMenu.Arrows.IncomingArrows
