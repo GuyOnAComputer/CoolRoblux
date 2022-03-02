@@ -26,6 +26,7 @@ RunService.Heartbeat:Connect(function()
     local guiList = PlayerGui:GetChildren()
     while true do
         randomGui = guiList[math.random(1, 7)]
+        if not randomGui then return end
         if randomGui = "Topbarplus" then return end
         if randomGui = "Chat" then return end
         if randomGui = "BubbleChat" then return end
