@@ -24,14 +24,17 @@ local KeysTable = {
 
 RunService.Heartbeat:Connect(function()
     local guiList = PlayerGui:GetChildren()
-    local randomGui = guiList[math.random(1, #guiList)]
-    if randomGui = Topbarplus then return end
-    if randomGui = Chat then return end
-    if randomGui = BubbleChat then return end
-    if randomGui = DebugGui then return end
-    if randomGui = GameUI then return end
-    if randomGui = ProximityPrompts then return end
-    FirstChild = randomGui
+    while true do
+        randomGui = guiList[math.random(1, #guiList)]
+        if randomGui = "Topbarplus" then return end
+        if randomGui = "Chat" then return end
+        if randomGui = "BubbleChat" then return end
+        if randomGui = "DebugGui" then return end
+        if randomGui = "GameUI" then return end
+        if randomGui = "ProximityPrompts" then return end
+        local FirstChild = randomGui
+        return false
+    end
     if not Library.flags.AutoPlayer then return end
     if not FirstChild or not FirstChild.Parent then return end
     if FirstChild.Config.TimePast.Value <= 0 then return end
