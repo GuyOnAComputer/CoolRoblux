@@ -26,14 +26,14 @@ local KeysTable = {
 RunService.Heartbeat:Connect(function()
     for i, CoolFunny in ipairs(game:GetDescendants()) do
         if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
-            local Menu = CoolFunny.parent
+            local FunnyMenu = CoolFunny.parent
         end
     end
     if not Library.flags.AutoPlayer then return end
-    if not Menu or not Menu.Parent then return end
-    if Menu.Config.TimePast.Value <= 0 then return end
+    if not FunnyMenu or not FunnyMenu.Parent then return end
+    if FunnyMenu.Config.TimePast.Value <= 0 then return end
     
-    local SideMenu = Menu.Game:FindFirstChild(Menu.PlayerSide.Value)
+    local SideMenu = FunnyMenu.Game:FindFirstChild(FunnyMenu.PlayerSide.Value)
     local IncomingArrows = SideMenu.Arrows.IncomingArrows
 
     local Keys = KeysTable[tostring(#IncomingArrows:GetChildren())] or IncomingArrows:GetChildren()
@@ -41,7 +41,7 @@ RunService.Heartbeat:Connect(function()
     for Key, Direction in pairs(Keys) do
         for i, CoolFunny in ipairs(game:GetDescendants()) do
             if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
-                local Menu = CoolFunny.parent
+                local FunnyMenu = CoolFunny.parent
             end
         end
         Direction = tostring(Direction)
