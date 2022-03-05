@@ -24,7 +24,7 @@ local KeysTable = {
 }
 
 RunService.Heartbeat:Connect(function()
-    for i, CoolFunny in ipairs(players:GetDescendants()) do
+    for i, CoolFunny in ipairs(game:GetDescendants()) do
         if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
             local Menu = CoolFunny.parent
         end
@@ -39,13 +39,18 @@ RunService.Heartbeat:Connect(function()
     local Keys = KeysTable[tostring(#IncomingArrows:GetChildren())] or IncomingArrows:GetChildren()
 
     for Key, Direction in pairs(Keys) do
+        for i, CoolFunny in ipairs(game:GetDescendants()) do
+            if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
+                local Menu = CoolFunny.parent
+            end
+        end
         Direction = tostring(Direction)
 
         local ArrowsHolder = IncomingArrows:FindFirstChild(Direction) or IncomingArrows:FindFirstChild(Key)
         if not ArrowsHolder then continue end
 
         for _, Object in ipairs(ArrowsHolder:GetChildren()) do
-            for i, CoolFunny in ipairs(players:GetDescendants()) do
+            for i, CoolFunny in ipairs(game:GetDescendants()) do
                 if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
                     local Menu = CoolFunny.parent
                 end
@@ -60,6 +65,11 @@ RunService.Heartbeat:Connect(function()
             local IsHell = Object:FindFirstChild("HellNote") and Object:FindFirstChild("HellNote").Value
 
             if Difference <= 0.35 and not IsHell then
+                for i, CoolFunny in ipairs(game:GetDescendants()) do
+                    if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
+                        local Menu = CoolFunny.parent
+                    end
+                end
                 Marked[#Marked + 1] = Object
 
                 InputManager:SendKeyEvent(true, Enum.KeyCode[Keybind], false, nil)
