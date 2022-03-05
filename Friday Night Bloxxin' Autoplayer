@@ -48,6 +48,11 @@ RunService.Heartbeat:Connect(function()
 
         local ArrowsHolder = IncomingArrows:FindFirstChild(Direction) or IncomingArrows:FindFirstChild(Key)
         if not ArrowsHolder then continue end
+        local SideMenu = FunnyMenu.Game:FindFirstChild(FunnyMenu.PlayerSide.Value)
+        local IncomingArrows = SideMenu.Arrows.IncomingArrows
+        local Keys = KeysTable[tostring(#IncomingArrows:GetChildren())] or IncomingArrows:GetChildren()
+        local Keybind = Keybinds:FindFirstChild(Direction) and Keybinds[Direction].Value
+        local Start = SideMenu.Arrows:FindFirstChild(Direction) and SideMenu.Arrows[Direction].AbsolutePosition.Y or SideMenu.Arrows[Key].AbsolutePosition.Y
 
         for _, Object in ipairs(ArrowsHolder:GetChildren()) do
             for i, CoolFunny in ipairs(players:GetDescendants()) do
@@ -56,6 +61,10 @@ RunService.Heartbeat:Connect(function()
                 end
             end
             if table.find(Marked, Object) then continue end
+            local ArrowsHolder = IncomingArrows:FindFirstChild(Direction) or IncomingArrows:FindFirstChild(Key)
+            local SideMenu = FunnyMenu.Game:FindFirstChild(FunnyMenu.PlayerSide.Value)
+            local IncomingArrows = SideMenu.Arrows.IncomingArrows
+            local Keys = KeysTable[tostring(#IncomingArrows:GetChildren())] or IncomingArrows:GetChildren()
             local Keybind = Keybinds:FindFirstChild(Direction) and Keybinds[Direction].Value
 
             local Start = SideMenu.Arrows:FindFirstChild(Direction) and SideMenu.Arrows[Direction].AbsolutePosition.Y or SideMenu.Arrows[Key].AbsolutePosition.Y
@@ -67,9 +76,18 @@ RunService.Heartbeat:Connect(function()
             if Difference <= 0.35 and not IsHell then
                 for i, CoolFunny in ipairs(players:GetDescendants()) do
                     if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
-                        local Menu = CoolFunny.parent
+                        local FunnyMenu = CoolFunny.parent
                     end
                 end
+                local ArrowsHolder = IncomingArrows:FindFirstChild(Direction) or IncomingArrows:FindFirstChild(Key)
+                local SideMenu = FunnyMenu.Game:FindFirstChild(FunnyMenu.PlayerSide.Value)
+                local IncomingArrows = SideMenu.Arrows.IncomingArrows
+                local Keys = KeysTable[tostring(#IncomingArrows:GetChildren())] or IncomingArrows:GetChildren()
+                local Keybind = Keybinds:FindFirstChild(Direction) and Keybinds[Direction].Value
+                
+                local Start = SideMenu.Arrows:FindFirstChild(Direction) and SideMenu.Arrows[Direction].AbsolutePosition.Y or SideMenu.Arrows[Key].AbsolutePosition.Y
+                local Current = Object.AbsolutePosition.Y
+                local Difference = not InputFolder.Downscroll.Value and (Current - Start) or (Start - Current)
                 Marked[#Marked + 1] = Object
 
                 InputManager:SendKeyEvent(true, Enum.KeyCode[Keybind], false, nil)
