@@ -24,6 +24,11 @@ local KeysTable = {
 }
 
 RunService.Heartbeat:Connect(function()
+    for i, CoolFunny in ipairs(players:GetDescendants()) do
+        if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
+            local Menu = CoolFunny.parent
+        end
+    end
     if not Library.flags.AutoPlayer then return end
     if not Menu or not Menu.Parent then return end
     if Menu.Config.TimePast.Value <= 0 then return end
@@ -40,6 +45,11 @@ RunService.Heartbeat:Connect(function()
         if not ArrowsHolder then continue end
 
         for _, Object in ipairs(ArrowsHolder:GetChildren()) do
+            for i, CoolFunny in ipairs(players:GetDescendants()) do
+                if CoolFunny.Name == "PlayerSide" and CoolFunny.ClassName == "StringValue" then
+                    local Menu = CoolFunny.parent
+                end
+            end
             if table.find(Marked, Object) then continue end
             local Keybind = Keybinds:FindFirstChild(Direction) and Keybinds[Direction].Value
 
